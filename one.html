@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Apkmodderkings</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+
+    body{
+      min-height:100vh;
+      background:#f3f3f3;
+      color:#111;
+      display:flex;flex-direction:column;align-items:center;
+      padding:14px;overflow-x:hidden;
+      position:relative;
+      transition:background .3s,color .3s;
+    }
+    body.dark{background:#000;color:#3da5ff;} /* Dark mode */
+
+    body::before{
+      content:"";position:absolute;inset:0;
+      background-image:linear-gradient(90deg,rgba(0,0,0,0.05) 1px,transparent 1px),
+                       linear-gradient(rgba(0,0,0,0.05) 1px,transparent 1px);
+      background-size:40px 40px;
+      animation:moveBG 12s linear infinite;
+      z-index:0;
+    }
+    @keyframes moveBG{0%{background-position:0 0;}100%{background-position:40px 40px;}}
+
+    .header,.app-list,.telegram-btn{z-index:1;}
+    .header{
+      display:flex;align-items:center;justify-content:space-between;
+      background:#fff;padding:10px 18px;border-radius:16px;margin-bottom:20px;
+      box-shadow:0 4px 12px rgba(0,0,0,.08);width:100%;max-width:420px;
+    }
+    .header-left{display:flex;align-items:center;gap:10px;}
+    .header img{width:32px;height:32px;border-radius:8px;object-fit:cover;}
+    .header span{font-size:17px;font-weight:700;color:#111;}
+    body.dark .header{background:#111;}
+    body.dark .header span{color:#3da5ff;} /* Title always blue in dark */
+
+    .toggle-btn{
+      font-size:14px;padding:6px 12px;border-radius:16px;
+      border:1px solid #ddd;cursor:pointer;background:#fff;
+      display:flex;align-items:center;gap:6px;
+      box-shadow:0 2px 6px rgba(0,0,0,.06);
+    }
+    .toggle-btn img{width:18px;height:18px;}
+    body.dark .toggle-btn{background:#111;color:#3da5ff;border-color:#555;}
+
+    .app-list{width:100%;max-width:420px;display:flex;flex-direction:column;gap:12px;}
+    .app-card{display:flex;align-items:center;justify-content:space-between;
+      background:#fff;border-radius:14px;padding:10px;
+      box-shadow:0 2px 8px rgba(0,0,0,.05);}
+    body.dark .app-card{background:#111;border:1px solid #222;}
+    .app-left{display:flex;align-items:center;gap:12px;}
+    .app-left img{width:44px;height:44px;border-radius:10px;object-fit:cover;}
+    .app-info{display:flex;flex-direction:column;}
+    .app-info h3{font-size:14px;font-weight:600;}
+    .app-info a{font-size:12px;color:#0077ff;text-decoration:none;}
+    .start-btn{background:#fff;color:#111;border:1px solid #ddd;
+      padding:6px 14px;border-radius:18px;font-size:12px;font-weight:600;
+      cursor:pointer;transition:.25s;box-shadow:0 2px 6px rgba(0,0,0,.06);}
+    .start-btn:hover{transform:translateY(-1px);}
+    body.dark .start-btn{background:#111;color:#3da5ff;border-color:#444;}
+
+    .telegram-btn{margin-top:20px;padding:10px 20px;background:#fff;color:#111;
+      border-radius:20px;font-weight:600;text-decoration:none;transition:.25s;
+      box-shadow:0 4px 10px rgba(0,0,0,.08);border:1px solid #ddd;}
+    .telegram-btn:hover{transform:translateY(-1px);}
+    body.dark .telegram-btn{background:#111;color:#3da5ff;border-color:#444;}
+
+    .modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.25);
+      backdrop-filter:blur(4px);display:flex;justify-content:center;align-items:center;
+      opacity:0;pointer-events:none;transition:opacity .2s ease;}
+    .modal.show{opacity:1;pointer-events:auto;}
+
+    .modal-content{position:relative;width:85%;max-width:320px;padding:20px;
+      border-radius:16px;text-align:center;background:#fff;border:1px solid #eee;
+      box-shadow:0 8px 24px rgba(0,0,0,.15);transform:translateY(30px);opacity:0;
+      transition:transform .25s ease,opacity .25s ease;}
+    .modal.show .modal-content{transform:translateY(0);opacity:1;}
+    body.dark .modal-content{background:#111;border-color:#333;color:#3da5ff;}
+
+    .close-btn{position:absolute;top:8px;right:10px;background:#f3f3f3;color:#333;
+      font-weight:700;border:none;padding:4px 8px;border-radius:50%;cursor:pointer;
+      font-size:12px;box-shadow:0 1px 4px rgba(0,0,0,.1);}
+    body.dark .close-btn{background:#222;color:#3da5ff;}
+
+    .modal-title a{display:flex;align-items:center;gap:6px;justify-content:center;
+      font-size:15px;font-weight:600;text-decoration:none;color:#0077ff;}
+    .modal-title img{width:18px;height:18px;}
+
+    .result-box{margin:10px auto;padding:8px 12px;border-radius:10px;
+      background:#f2f6ff;border:1px solid #d0e2ff;font-weight:700;
+      display:flex;align-items:center;justify-content:center;gap:6px;}
+    body.dark .result-box{background:#111;border-color:#333;}
+
+    #resultText span.big{color:green;}
+    #resultText span.small{color:red;}
+
+    .live-indicator{
+      display:flex;align-items:center;gap:4px;
+      font-size:11px;font-weight:600;color:red;
+      animation:fadeInOut 1.2s infinite;
+    }
+    .live-dot{
+      width:8px;height:8px;border-radius:50%;background:red;
+      animation:blink 1s infinite;
+    }
+    @keyframes blink{0%,100%{opacity:0.2;}50%{opacity:1;}}
+    @keyframes fadeInOut{0%,100%{opacity:0.2;}50%{opacity:1;}}
+
+    #timerText{font-size:14px;font-weight:600;margin-top:6px;}
+    #periodNumber{font-size:13px;margin-top:8px;}
+
+    .bottom-row{
+      margin-top:10px;
+      display:flex;align-items:center;justify-content:space-between;
+    }
+    .buy-btn{
+      padding:5px 12px;
+      border-radius:6px;
+      background:#0077ff;
+      color:#fff;
+      font-size:12px;
+      font-weight:600;
+      text-decoration:none;
+      transition:.25s;
+    }
+    .buy-btn:hover{opacity:0.85;}
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-left">
+      <img src="https://i.ibb.co/VcWgp8mh/x.jpg" alt="Logo">
+      <span>Apkmodderkings</span>
+    </div>
+    <button class="toggle-btn" onclick="toggleTheme()">
+      <img src="https://cdn-icons-png.flaticon.com/512/6714/6714978.png" alt="mode">
+    </button>
+  </div>
+
+  <div class="app-list">
+    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/pvXx2ZBR/x.jpg"><div class="app-info"><h3>55 Club</h3><a href="https://www.in979.in/#/register?invitationCode=83221522037" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
+    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/RpW3GYRk/x.jpg"><div class="app-info"><h3>82 Lottery</h3><a href="https://82lottery9.com/#/register?invitationCode=14244992621" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
+    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/Gv4cCLRd/x.jpg"><div class="app-info"><h3>Bdgwin</h3><a href="https://bdgwina.top//#/register?invitationCode=372171400520" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
+    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/VWKvPtmT/x.jpg"><div class="app-info"><h3>Big Daddy</h3><a href="https://bdg-4.com/#/register?invitationCode=b7yIo501953" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
+    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/LDLB7gCD/x.jpg"><div class="app-info"><h3>91 Club</h3><a href="https://91777.in/#/register?invitationCode=111355811375" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
+    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/LzrzcJG2/x.jpg"><div class="app-info"><h3>Tiranga</h3><a href="https://www.tirangaclub.org/#/register?invitationCode=357811313367" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
+    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/Zp5GT8G9/x.jpg"><div class="app-info"><h3>Bharat Club</h3><a href="https://bhtclub0.com/#/register?invitationCode=884382272723" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
+    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/7Jf11hj1/x.jpg"><div class="app-info"><h3>Big Mumbai</h3><a href="https://www.gurlamandhata.com/#/register?invitationCode=231142312313" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
+  </div>
+
+  <a href="https://t.me/apkmodderkings" target="_blank" class="telegram-btn">Join Telegram</a>
+
+  <div id="predictionModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <div class="modal-title">
+        <a href="https://telegram.me/apkmodderkings" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="TG"> Apkmodderkings
+        </a>
+      </div>
+      <div id="periodNumber">Period: --</div>
+      <div class="result-box">
+        <div id="resultText">?</div>
+        <div class="live-indicator"><div class="live-dot"></div>LIVE</div>
+      </div>
+      <div class="bottom-row">
+        <div id="timerText">00:00</div>
+        <a href="https://telegram.me/ZebDex" target="_blank" class="buy-btn">Buy Key</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let modal=document.getElementById("predictionModal");
+    let resultText=document.getElementById("resultText");
+    let timerText=document.getElementById("timerText");
+    let periodNumber=document.getElementById("periodNumber");
+
+    function openModal(){ modal.classList.add("show"); }
+    function closeModal(){ modal.classList.remove("show"); }
+
+    function updatePeriodAndTimer(){
+      let now=new Date();
+      let year=now.getUTCFullYear();
+      let month=String(now.getUTCMonth()+1).padStart(2,'0');
+      let day=String(now.getUTCDate()).padStart(2,'0');
+      let hours=now.getUTCHours();
+      let minutes=now.getUTCMinutes();
+      let totalMinutes=hours*60+minutes;
+
+      let periodNum=`${year}${month}${day}1000${10001+totalMinutes}`;
+      periodNumber.innerText="Period: "+periodNum;
+
+      let lastTwoDigits=periodNum.slice(-2);
+      let sum=[...lastTwoDigits].reduce((a,b)=>a+parseInt(b),0);
+      if(sum>9) sum=[...String(sum)].reduce((a,b)=>a+parseInt(b),0);
+
+      let result=sum>=5?"BIG":"SMALL";
+      resultText.innerHTML=`<span class="${sum>=5?'big':'small'}">${result}</span>`;
+
+      let seconds=now.getUTCSeconds();
+      let remainingSeconds=60-seconds;
+      timerText.innerText=`00:${String(remainingSeconds).padStart(2,'0')}`;
+    }
+    setInterval(updatePeriodAndTimer,1000);
+    updatePeriodAndTimer();
+
+    function toggleTheme(){
+      document.body.classList.toggle("dark");
+    }
+  </script>
+</body>
+</html>
