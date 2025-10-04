@@ -2,88 +2,146 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Free Time Expired</title>
+  <title>New Update Available</title>
   <style>
-    body {
+    /* Reset & background */
+    * {
       margin: 0;
       padding: 0;
-      font-family: sans-serif;
-      background: rgba(0, 0, 0, 0.8);
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #737373; /* A solid grey color similar to the image */
       height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; /* Aligns the item to the top of the container */
+      padding-top: 10vh; /* Pushes the dialog box down a bit from the very top */
+      font-family: 'Segoe UI', sans-serif;
     }
 
+    /* Dialog Box */
     .dialog-box {
-      background: #fff;
-      padding: 30px 20px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
-      max-width: 300px;
+      background-color: #ffffff;
+      padding: 60px; /* Increased padding */
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* A slightly darker shadow */
+      max-width: 850px; /* Made the width significantly larger */
       width: 100%;
+      text-align: left;
+      animation: pop-in 0.6s ease;
+      border: 1px solid #ccc;
     }
 
-    .dialog-box h2 {
-      margin-bottom: 15px;
-      color: #333;
+    @keyframes pop-in {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
-    .dialog-box p {
-      margin-bottom: 25px;
-      color: #555;
+    .header-section {
+      display: flex;
+      align-items: center;
+      margin-bottom: 35px; /* Increased margin */
     }
 
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 5px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      text-decoration: none;
+    .header-section .logo {
+      width: 45px; /* Slightly larger logo */
+      height: 45px;
+      margin-right: 25px;
+    }
+
+    .header-section h2 {
+      font-size: 32px; /* Larger font size for the title */
+      color: #222;
       font-weight: bold;
     }
 
-    .buy-btn {
-      background-color: #007bff;
-      color: white;
-    }
-
-    .telegram-btn {
-      background: none;
-      border: none;
+    .features-list {
+      list-style-type: none;
       padding: 0;
+      margin-bottom: 50px; /* Increased margin */
     }
 
-    .telegram-btn img {
-      width: 40px;
-      height: 40px;
+    .features-list li {
+      font-size: 22px; /* Larger font size for list items */
+      color: #555;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: flex-start;
     }
 
-    .telegram-text {
-      font-size: 14px;
+    .features-list li::before {
+      content: '•';
       color: #007bff;
-      margin-top: 5px;
-      display: block;
+      font-size: 32px; /* Larger dot size */
+      line-height: 0.8;
+      margin-right: 15px;
+      transform: translateY(2px);
+      display: inline-block;
+    }
+
+    /* Button Container */
+    .button-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 25px; /* Increased gap between buttons */
+      margin-top: 35px;
+    }
+    
+    .btn {
+      flex: 1;
+      padding: 20px 35px; /* Increased button padding */
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 22px; /* Larger font size for buttons */
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+      border: none;
+    }
+
+    .btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .telegram-btn {
+      background-color: #FFD700; /* Yellow background */
+      color: #333;
+    }
+    
+    .buy-paid-btn {
+      background-color: #28a745; /* Green background */
+      color: white;
     }
   </style>
 </head>
 <body>
   <div class="dialog-box">
-    <h2>Free Time Expired</h2>
-    <p>Please buy the paid version to continue.</p>
+    <div class="header-section">
+      <img src="https://cdn-icons-png.flaticon.com/512/731/731985.png" alt="Apple-like Logo" class="logo">
+      <h2>New Update Available!</h2>
+    </div>
 
-    <a href="https://telegram.me/krovnix" class="btn buy-btn" target="_blank">
-      Buy Paid Version
-    </a>
+    <ul class="features-list">
+      <li>Mod Features :-</li>
+      <li>Premium Unlocked</li>
+      <li>Bug Fixed</li>
+      <li>Ads Free</li>
+      <li>All Device Supported</li>
+    </ul>
 
-    <div style="margin-top: 20px;">
-      <a href="https://telegram.me/+vZFYt6KHvHU1ZGM1" class="telegram-btn" target="_blank">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon">
-        <span class="telegram-text">Join us on Telegram</span>
-      </a>
+    <div class="button-container">
+      <a href="https://telegram.me/+vZFYt6KHvHU1ZGM1" class="btn telegram-btn" target="_blank">Telegram</a>
+      <a href="https://telegram.me/krovnix" class="btn buy-paid-btn" target="_blank">Buy Paid</a>
     </div>
   </div>
 </body>
