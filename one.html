@@ -2,211 +2,89 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Premium Notice</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <title>Free Time Expired</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      padding: 0;
+      font-family: sans-serif;
+      background: rgba(0, 0, 0, 0.8);
       height: 100vh;
-    }
-
-    .notice-card {
-      background-color: #f9f9ff;
-      border: 1px solid #ddd;
-      border-left: 5px solid #7b2cbf; /* Premium purple */
-      border-radius: 10px;
-      max-width: 320px;
-      padding: 20px 24px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-      animation: fadeIn 0.4s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .notice-card h3 {
-      font-size: 16px;
-      color: #333;
-      margin: 0 0 10px;
-      font-weight: 600;
-    }
-
-    .notice-card p {
-      font-size: 13px;
-      color: #555;
-      margin: 0 0 20px;
-      line-height: 1.4;
-    }
-
-    .btn-group {
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .dialog-box {
+      background: #fff;
+      padding: 30px 20px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      max-width: 300px;
+      width: 100%;
+    }
+
+    .dialog-box h2 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .dialog-box p {
+      margin-bottom: 25px;
+      color: #555;
     }
 
     .btn {
       display: inline-block;
-      text-align: center;
+      padding: 10px 20px;
+      margin: 5px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
       text-decoration: none;
+      font-weight: bold;
+    }
+
+    .buy-btn {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .telegram-btn {
+      background: none;
+      border: none;
+      padding: 0;
+    }
+
+    .telegram-btn img {
+      width: 40px;
+      height: 40px;
+    }
+
+    .telegram-text {
       font-size: 14px;
-      padding: 10px;
-      border-radius: 6px;
-      font-weight: 600;
-      transition: all 0.25s ease;
-    }
-
-    .btn-buy {
-      background-color: #7b2cbf;
-      color: #fff;
-    }
-
-    .btn-buy:hover {
-      background-color: #5a189a;
-    }
-
-    .btn-telegram {
-      background-color: #eeeeff;
-      color: #3a86ff;
-      border: 1px solid #ccc;
-    }
-
-    .btn-telegram:hover {
-      background-color: #e0e0ff;
+      color: #007bff;
+      margin-top: 5px;
+      display: block;
     }
   </style>
 </head>
 <body>
+  <div class="dialog-box">
+    <h2>Free Time Expired</h2>
+    <p>Please buy the paid version to continue.</p>
 
-  <div class="notice-card">
-    <h3>Free Time Expired</h3>
-    <p>Free time expire ho gayi hai. Ab is feature ko use karne ke liye APK buy karna padega.</p>
-    <div class="btn-group">
-      <a href="https://telegram.me/krovnix" class="btn btn-buy">Buy APK</a>
-      <a href="https://telegram.me/apkmodderkings" class="btn btn-telegram">Join Telegram</a>
+    <a href="https://telegram.me/krovnix" class="btn buy-btn" target="_blank">
+      Buy Paid Version
+    </a>
+
+    <div style="margin-top: 20px;">
+      <a href="https://telegram.me/+vZFYt6KHvHU1ZGM1" class="telegram-btn" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="Telegram Icon">
+        <span class="telegram-text">Join us on Telegram</span>
+      </a>
     </div>
   </div>
-
-</body>
-</html>      width:8px;height:8px;border-radius:50%;background:red;
-      animation:blink 1s infinite;
-    }
-    @keyframes blink{0%,100%{opacity:0.2;}50%{opacity:1;}}
-    @keyframes fadeInOut{0%,100%{opacity:0.2;}50%{opacity:1;}}
-
-    #timerText{font-size:14px;font-weight:600;margin-top:6px;}
-    #periodNumber{font-size:13px;margin-top:8px;}
-
-    .bottom-row{
-      margin-top:10px;
-      display:flex;align-items:center;justify-content:space-between;
-    }
-    .buy-btn{
-      padding:5px 12px;
-      border-radius:6px;
-      background:#0077ff;
-      color:#fff;
-      font-size:12px;
-      font-weight:600;
-      text-decoration:none;
-      transition:.25s;
-    }
-    .buy-btn:hover{opacity:0.85;}
-  </style>
-</head>
-<body>
-  <div class="header">
-    <div class="header-left">
-      <img src="https://i.ibb.co/VcWgp8mh/x.jpg" alt="Logo">
-      <span>Apkmodderkings</span>
-    </div>
-    <button class="toggle-btn" onclick="toggleTheme()">
-      <img src="https://cdn-icons-png.flaticon.com/512/6714/6714978.png" alt="mode">
-    </button>
-  </div>
-
-  <div class="app-list">
-    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/pvXx2ZBR/x.jpg"><div class="app-info"><h3>55 Club</h3><a href="https://www.in979.in/#/register?invitationCode=83221522037" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
-    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/RpW3GYRk/x.jpg"><div class="app-info"><h3>82 Lottery</h3><a href="https://82lottery9.com/#/register?invitationCode=14244992621" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
-    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/Gv4cCLRd/x.jpg"><div class="app-info"><h3>Bdgwin</h3><a href="https://bdgwina.top//#/register?invitationCode=372171400520" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
-    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/VWKvPtmT/x.jpg"><div class="app-info"><h3>Big Daddy</h3><a href="https://bdg-4.com/#/register?invitationCode=b7yIo501953" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
-    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/LDLB7gCD/x.jpg"><div class="app-info"><h3>91 Club</h3><a href="https://91777.in/#/register?invitationCode=111355811375" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
-    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/LzrzcJG2/x.jpg"><div class="app-info"><h3>Tiranga</h3><a href="https://www.tirangaclub.org/#/register?invitationCode=357811313367" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
-    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/Zp5GT8G9/x.jpg"><div class="app-info"><h3>Bharat Club</h3><a href="https://bhtclub0.com/#/register?invitationCode=884382272723" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
-    <div class="app-card"><div class="app-left"><img src="https://i.ibb.co/7Jf11hj1/x.jpg"><div class="app-info"><h3>Big Mumbai</h3><a href="https://www.gurlamandhata.com/#/register?invitationCode=231142312313" target="_blank">Create Account</a></div></div><button class="start-btn" onclick="openModal()">Start</button></div>
-  </div>
-
-  <a href="https://t.me/apkmodderkings" target="_blank" class="telegram-btn">Join Telegram</a>
-
-  <div id="predictionModal" class="modal">
-    <div class="modal-content">
-      <button class="close-btn" onclick="closeModal()">×</button>
-      <div class="modal-title">
-        <a href="https://telegram.me/apkmodderkings" target="_blank">
-          <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" alt="TG"> Apkmodderkings
-        </a>
-      </div>
-      <div id="periodNumber">Period: --</div>
-      <div class="result-box">
-        <div id="resultText">?</div>
-        <div class="live-indicator"><div class="live-dot"></div>LIVE</div>
-      </div>
-      <div class="bottom-row">
-        <div id="timerText">00:00</div>
-        <a href="https://telegram.me/Krovnix" target="_blank" class="buy-btn">Buy Key</a>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    let modal=document.getElementById("predictionModal");
-    let resultText=document.getElementById("resultText");
-    let timerText=document.getElementById("timerText");
-    let periodNumber=document.getElementById("periodNumber");
-
-    function openModal(){ modal.classList.add("show"); }
-    function closeModal(){ modal.classList.remove("show"); }
-
-    function updatePeriodAndTimer(){
-      let now=new Date();
-      let year=now.getUTCFullYear();
-      let month=String(now.getUTCMonth()+1).padStart(2,'0');
-      let day=String(now.getUTCDate()).padStart(2,'0');
-      let hours=now.getUTCHours();
-      let minutes=now.getUTCMinutes();
-      let totalMinutes=hours*60+minutes;
-
-      let periodNum=`${year}${month}${day}1000${10001+totalMinutes}`;
-      periodNumber.innerText="Period: "+periodNum;
-
-      let lastTwoDigits=periodNum.slice(-2);
-      let sum=[...lastTwoDigits].reduce((a,b)=>a+parseInt(b),0);
-      if(sum>9) sum=[...String(sum)].reduce((a,b)=>a+parseInt(b),0);
-
-      let result=sum>=5?"BIG":"SMALL";
-      resultText.innerHTML=`<span class="${sum>=5?'big':'small'}">${result}</span>`;
-
-      let seconds=now.getUTCSeconds();
-      let remainingSeconds=60-seconds;
-      timerText.innerText=`00:${String(remainingSeconds).padStart(2,'0')}`;
-    }
-    setInterval(updatePeriodAndTimer,1000);
-    updatePeriodAndTimer();
-
-    function toggleTheme(){
-      document.body.classList.toggle("dark");
-    }
-  </script>
 </body>
 </html>
