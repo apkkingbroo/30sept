@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>New Update Available</title>
   <style>
-    /* Reset & background */
+    /* General Styles & Background */
     * {
       margin: 0;
       padding: 0;
@@ -12,32 +12,31 @@
     }
 
     body {
-      background: #737373; /* A solid grey color similar to the image */
+      background: #4A4A4A;
       height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: flex-start; /* Aligns the item to the top of the container */
-      padding-top: 10vh; /* Pushes the dialog box down a bit from the very top */
+      align-items: center;
       font-family: 'Segoe UI', sans-serif;
     }
 
     /* Dialog Box */
     .dialog-box {
-      background-color: #ffffff;
-      padding: 60px; /* Increased padding */
-      border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* A slightly darker shadow */
-      max-width: 850px; /* Made the width significantly larger */
-      width: 100%;
+      background: linear-gradient(145deg, #f9f9f9, #e0e0e0);
+      padding: 60px;
+      border-radius: 25px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      max-width: 900px;
+      width: 90%;
       text-align: left;
-      animation: pop-in 0.6s ease;
-      border: 1px solid #ccc;
+      animation: pop-in 0.8s ease-out;
+      border: none;
     }
 
     @keyframes pop-in {
       from {
         opacity: 0;
-        transform: scale(0.8);
+        transform: scale(0.7);
       }
       to {
         opacity: 1;
@@ -48,95 +47,113 @@
     .header-section {
       display: flex;
       align-items: center;
-      margin-bottom: 35px; /* Increased margin */
+      margin-bottom: 40px;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 20px;
     }
 
     .header-section .logo {
-      width: 45px; /* Slightly larger logo */
-      height: 45px;
+      width: 50px;
+      height: 50px;
       margin-right: 25px;
     }
 
     .header-section h2 {
-      font-size: 32px; /* Larger font size for the title */
-      color: #222;
-      font-weight: bold;
+      font-size: 36px;
+      color: #333;
+      font-weight: 600;
     }
 
     .features-list {
       list-style-type: none;
       padding: 0;
-      margin-bottom: 50px; /* Increased margin */
+      margin-bottom: 60px;
     }
 
     .features-list li {
-      font-size: 22px; /* Larger font size for list items */
-      color: #555;
-      margin-bottom: 18px;
+      font-size: 24px;
+      color: #444;
+      margin-bottom: 20px;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
+      opacity: 0;
+      transform: translateX(-20px);
+      animation: slide-in 1s forwards;
+    }
+
+    .features-list li:nth-child(1) { animation-delay: 0.2s; }
+    .features-list li:nth-child(2) { animation-delay: 0.4s; }
+    .features-list li:nth-child(3) { animation-delay: 0.6s; }
+    .features-list li:nth-child(4) { animation-delay: 0.8s; }
+    .features-list li:nth-child(5) { animation-delay: 1.0s; }
+
+    @keyframes slide-in {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
 
     .features-list li::before {
-      content: '•';
-      color: #007bff;
-      font-size: 32px; /* Larger dot size */
-      line-height: 0.8;
-      margin-right: 15px;
-      transform: translateY(2px);
-      display: inline-block;
+      content: '✔';
+      color: #00A86B; /* Green checkmark for a premium feel */
+      font-size: 30px;
+      margin-right: 20px;
+      transform: translateY(-2px);
     }
 
     /* Button Container */
     .button-container {
       display: flex;
-      justify-content: space-between;
-      gap: 25px; /* Increased gap between buttons */
-      margin-top: 35px;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 40px;
     }
     
     .btn {
       flex: 1;
-      padding: 20px 35px; /* Increased button padding */
-      border-radius: 8px;
+      max-width: 300px;
+      padding: 22px 40px;
+      border-radius: 12px;
       text-decoration: none;
       font-weight: bold;
-      font-size: 22px; /* Larger font size for buttons */
-      transition: transform 0.2s ease, box-shadow 0.3s ease;
-      cursor: pointer;
+      font-size: 24px;
       text-align: center;
       border: none;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
     }
 
     .btn:hover {
-      transform: scale(1.02);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
     }
-    
+
     .telegram-btn {
-      background-color: #FFD700; /* Yellow background */
-      color: #333;
+      background-color: #0088CC; /* Telegram Blue */
+      color: white;
     }
     
     .buy-paid-btn {
-      background-color: #28a745; /* Green background */
-      color: white;
+      background-color: #FBB03B; /* Gold/Amber */
+      color: #333;
     }
   </style>
 </head>
 <body>
   <div class="dialog-box">
     <div class="header-section">
-      <img src="https://cdn-icons-png.flaticon.com/512/731/731985.png" alt="Apple-like Logo" class="logo">
-      <h2>New Update Available!</h2>
+      <img src="https://cdn-icons-png.flaticon.com/512/731/731985.png" alt="App Logo" class="logo">
+      <h2>This app is now paid!</h2>
     </div>
 
     <ul class="features-list">
-      <li>Mod Features :-</li>
-      <li>Premium Unlocked</li>
+      <li>Features :-</li>
+      <li>Paid</li>
       <li>Bug Fixed</li>
-      <li>Ads Free</li>
-      <li>All Device Supported</li>
+      <li>Live prediction</li>
+      <li>Server Connected</li>
     </ul>
 
     <div class="button-container">
